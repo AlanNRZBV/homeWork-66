@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface ITotal {
   total: number
 }
@@ -7,7 +9,25 @@ export interface IMeals {
 }
 export interface IMealsItem {
   id?: string
-  time: "Breakfast" | "Snack" | "Lunch" | "Dinner" | "Supper"
+  time: string
   description: string,
-  kcal: number
+  kcal: number | null
 }
+
+export interface IOptions {
+  value: string,
+  label: string
+}
+
+export interface IMealTool {
+  onSubmit: ()=>void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void
+  onSelect: (selected: IOptions | null)=>void
+  isLoading: IisLoading
+}
+
+export interface IisLoading {
+  addMeal: boolean
+}
+
+export type MealItem = Omit<IMealsItem, 'id'>
