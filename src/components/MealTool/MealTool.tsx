@@ -1,9 +1,9 @@
 import {IMealTool, IOptions} from "../../types";
 import Select from "react-select";
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit,}) => {
+const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit,meal,isEdit}) => {
 
   const navigate = useNavigate()
   const options: IOptions[] = [
@@ -12,6 +12,7 @@ const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit,}) => {
     { value: 'lunch', label: 'Lunch' },
     { value: 'dinner', label: 'Dinner' },
   ];
+  
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
@@ -36,6 +37,7 @@ const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit,}) => {
               type="text"
               name="description"
               id="description"
+              value={meal?.description}
               required
           />
         </div>
@@ -46,6 +48,7 @@ const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit,}) => {
               className="rounded border-2 px-2 py-0.5"
               type="text"
               name="kcal"
+              value={meal?.kcal}
               id="kcal"
               required
           />

@@ -6,12 +6,14 @@ import { NavLink } from 'react-router-dom';
 import Total from "../Total/Total.tsx";
 import {FadeLoader} from "react-spinners";
 
-const Meals: FC<IMeals> = ({ meals,isMealsLoading }) => {
+const Meals: FC<IMeals> = ({ meals,isMealsLoading,total ,onDelete, onEdit}) => {
+
+
   return (
     <section className="container mx-auto">
       <div className="flex items-center justify-between pt-3">
         {meals.length > 0 ? (
-            <Total total={1}/>
+            <Total total={total}/>
         ) : (
           <MealsIsEmpty />
         )}
@@ -23,9 +25,12 @@ const Meals: FC<IMeals> = ({ meals,isMealsLoading }) => {
             meals.map((item) => (
                 <MealsItem
                     key={item.id}
+                    id={item.id}
                     time={item.time}
                     kcal={item.kcal}
                     description={item.description}
+                    onDelete={onDelete}
+                    onEdit={onEdit}
                 />
             ))
         ) : (

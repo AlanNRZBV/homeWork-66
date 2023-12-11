@@ -7,12 +7,17 @@ export interface ITotal {
 export interface IMeals {
   meals: IMealsItem[]
   isMealsLoading: IisLoading
+  total: number
+  onDelete: (key: string)=>void
+  onEdit: (key: string)=>void
 }
 export interface IMealsItem {
   id?: string
   time: string
   description: string,
-  kcal: number | null
+  kcal: number
+  onDelete?: (key:string)=>void
+  onEdit?: (key: string)=>void
 }
 
 export interface IOptions {
@@ -24,11 +29,13 @@ export interface IMealTool {
   onSubmit: ()=>void
   onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void
   onSelect: (selected: IOptions | null)=>void
+  meal?: MealItem
+  isEdit?: boolean
+
 }
 
 export interface IisLoading {
   loadMeals: boolean
-  addMeal: boolean
 }
 
 export type MealItem = Omit<IMealsItem, 'id'>
