@@ -3,7 +3,7 @@ import Select from "react-select";
 import React, {FC} from "react";
 import {useNavigate} from "react-router-dom";
 
-const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit, isLoading}) => {
+const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit,}) => {
 
   const navigate = useNavigate()
   const options: IOptions[] = [
@@ -20,20 +20,39 @@ const MealTool: FC<IMealTool> = ({onChange, onSelect, onSubmit, isLoading}) => {
   }
 
   return (
-      <div className="container mx-auto mt-5">
-        <form onSubmit={submitHandler}>
-          <Select onChange={onSelect} options={options} isSearchable={true} required/>
-          <div className="flex flex-col">
-            <label htmlFor="description">Meal description</label>
-            <input onChange={onChange} className="rounded border-2 px-2 py-0.5" type="text" name="description" id="description" required/>
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="description">Calories</label>
-            <input onChange={onChange} className="rounded border-2 px-2 py-0.5" type="text" name="kcal" id="kcal" required/>
-          </div>
-          <button type="submit">Save</button>
-        </form>
-      </div>
+    <div className="container mx-auto mt-5">
+      <form onSubmit={submitHandler}>
+        <Select
+            onChange={onSelect}
+            options={options}
+            isSearchable={true}
+            required
+        />
+        <div className="flex flex-col">
+          <label htmlFor="description">Meal description</label>
+          <input
+              onChange={onChange}
+              className="rounded border-2 px-2 py-0.5"
+              type="text"
+              name="description"
+              id="description"
+              required
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="description">Calories</label>
+          <input
+              onChange={onChange}
+              className="rounded border-2 px-2 py-0.5"
+              type="text"
+              name="kcal"
+              id="kcal"
+              required
+          />
+        </div>
+        <button type="submit">Save</button>
+      </form>
+    </div>
   );
 };
 

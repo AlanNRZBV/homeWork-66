@@ -6,6 +6,7 @@ export interface ITotal {
 
 export interface IMeals {
   meals: IMealsItem[]
+  isMealsLoading: IisLoading
 }
 export interface IMealsItem {
   id?: string
@@ -23,10 +24,10 @@ export interface IMealTool {
   onSubmit: ()=>void
   onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void
   onSelect: (selected: IOptions | null)=>void
-  isLoading: IisLoading
 }
 
 export interface IisLoading {
+  loadMeals: boolean
   addMeal: boolean
 }
 
